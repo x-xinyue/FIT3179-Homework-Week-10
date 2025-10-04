@@ -12,13 +12,32 @@
 
   <!-- CSS file -->
   <link rel="stylesheet" type="text/css" href="css/styles.css" media="all">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Noto+Serif+Display:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
 </head>
 <body>
-  <h1>Food Costs and Inflation in Malaysia (2025)</h1>
-  <div id="choropleth_map"></div>
+  <div class="article-container">
+    <h1>Food Costs and Inflation in Malaysia</h1>
 
-  <!-- Load your map script last -->
-  <script src="js/map.js"></script>
+    <p class="intro">
+      Since the onset of the <strong>COVID-19</strong> pandemic in <strong>2020</strong>, inflation has become a pressing concern across the globe. Supply chain disruptions, rising production costs, and shifts in consumer demand have all contributed to steadily increasing prices.
+    </p>
+
+    <p class="intro">
+      In Southeast Asia, food inflation in particular has placed added pressure on households, with many countries experiencing sharp year-to-year fluctuations.
+      <strong>Malaysia</strong>, much like its neighbours, has seen significant increases in food costs and overall living expenses, making inflation a growing concern for families nationwide.
+    </p>
+
+    <div class="graph" id="bar_chart"></div>
+
+    <p> 
+      Within Malaysia, the impact of inflation has not been uniform across all states. Differences in household spending, economic activities, and local costs of living contribute to varying levels of price pressure throughout the country.
+    </p>
+
+    <div class="graph" id="choropleth_map"></div>
+  </div>
+
+  <!-- JS -->
+  <script src="js/charts.js"></script>
 </body>
 </html>

@@ -1,0 +1,63 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "Bar chart comparing Malaysia's inflation with ASEAN neighbours, 2020–2024",
+  "data": {
+    "url": "https://raw.githubusercontent.com/x-xinyue/FIT3179-Homework-Week-10/refs/heads/main/data/global_inflation.csv"
+  },
+"autosize": {
+  "type": "fit",
+  "contains": "padding"
+},
+"width": "container",
+"height": 300,
+  "title": { "text": "Comparing Inflation with Neighbours" },
+  "transform": [
+    {
+      "filter": {
+        "field": "Country Name",
+        "oneOf": ["Malaysia", "Singapore", "Thailand", "Indonesia", "Philippines"]
+      }
+    },
+    {
+      "fold": ["2019", "2020", "2021", "2022", "2023"],
+      "as": ["Year", "Inflation"]
+    },
+    {
+      "calculate": "toNumber(datum.Year)",
+      "as": "YearNum"
+    },
+    {
+      "calculate": "datum['Country Name'] == 'Malaysia' ? 'Malaysia' : 'Others'",
+      "as": "Highlight"
+    },
+    {
+      "filter": "datum.YearNum == yearSelector"
+    }
+  ],
+  "mark": "bar",
+  "encoding": {
+    "x": {"field": "Country Name", "type": "nominal", "axis": {"title": "Country"}},
+    "y": {"field": "Inflation", "type": "quantitative", "axis": {"title": "Inflation (%)"}},
+    "color": {
+      "field": "Highlight",
+      "type": "nominal",
+      "scale": {
+        "domain": ["Malaysia", "Others"],
+        "range": ["#1f77b4", "#cccccc"]
+      },
+      "legend": {"title": "Country Group"}
+    },
+    "tooltip": [
+      {"field": "Country Name", "type": "nominal"},
+      {"field": "Year", "type": "ordinal"},
+      {"field": "Inflation", "type": "quantitative"}
+    ]
+  },
+  "params": [
+    {
+      "name": "yearSelector",
+      "value": 2019,
+      "bind": {"input": "range", "min": 2019, "max": 2023, "step": 1, "name": "Select Year:"}
+    }
+  ]
+}

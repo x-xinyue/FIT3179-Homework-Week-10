@@ -1,14 +1,18 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
   "title": { "text": "State-Level Food & Beverages Price Inflation Year on Year (YoY)" },
-  "width": 800,
-  "height": 300,
   "projection": {"type": "mercator"},
   "view": {
       "fill": "#77BEF0",
       "stroke": "transparent",
       "opacity": 0.6
     },
+  "autosize": {
+    "type": "fit",
+    "contains": "padding"
+  },
+  "width": "container",
+  "height": 300,
   "layer": [
     {
       "data": {
